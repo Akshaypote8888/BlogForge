@@ -1,0 +1,142 @@
+.navbar{
+    padding-left: 40px;
+    padding-right: 40px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    background: linear-gradient(90deg, #0f766e, #5eead4);
+}
+
+
+
+/* Navbar links */
+.navbar-nav .nav-link {
+    color: #f8f9fa;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107; /* subtle highlight on hover */
+}
+
+/* Profile button */
+.dropdown-toggle {
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+
+
+.dropdown-toggle img {
+    border: 2px solid #fff;
+    transition: transform 0.2s, border-color 0.3s;
+}
+
+.dropdown-toggle:hover img {
+    transform: scale(1.1);
+    border-color: #ffc107; /* accent on hover */
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    border-radius: 0.5rem;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+.dropdown-item:hover {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: #1e293b;
+  color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s;
+  position: fixed;
+
+  &.collapsed {
+    width: 70px;
+
+    .logo-text,
+    .link-text {
+      display: none;
+    }
+
+    .toggle-btn i {
+      transform: rotate(180deg);
+    }
+  }
+
+  .sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    .logo-img {
+      width: 150px;
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: #f3f4f6;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-menu {
+    flex-grow: 1;
+
+    .nav-link {
+      color: #f3f4f6;
+      padding: 0.75rem 1rem;
+      transition: background 0.2s, color 0.2s;
+
+      &:hover {
+        background-color: #334155;
+        color: #facc15;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+
+      .link-text {
+        transition: opacity 0.2s;
+      }
+    }
+  }
+
+  button.btn-danger {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    i {
+      font-size: 1.2rem;
+    }
+    .link-text {
+      transition: opacity 0.2s;
+    }
+  }
+}
+
+.rotated {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+.btn{
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
