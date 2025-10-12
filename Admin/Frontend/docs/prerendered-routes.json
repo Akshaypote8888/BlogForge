@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "/BlogForge": {},
+    "/BlogForge/account": {},
+    "/BlogForge/authors": {},
+    "/BlogForge/categories": {},
+    "/BlogForge/dashboard": {},
+    "/BlogForge/login": {},
+    "/BlogForge/posts": {}
+  }
+}
