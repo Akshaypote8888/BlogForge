@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "upsidon-api"
-  }
+    "default": "blogforge-4763d",
+    "staging": "blogforge-4763d"
+  },
+  "targets": {},
+  "etags": {}
 }
