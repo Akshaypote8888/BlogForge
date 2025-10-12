@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build --prod"
+  publish = "dist/BlogForge"
+  node_version = "18.20.4"
+
+[build.environment]
+  NODE_ENV = "production"
+  NPM_FLAGS = "--legacy-peer-deps"
