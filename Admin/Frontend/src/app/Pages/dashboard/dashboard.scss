@@ -1,0 +1,66 @@
+.dashboard {
+  .stats-card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      font-size: 2.5rem;
+      opacity: 0.8;
+    }
+
+    h6 {
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    p {
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  .chart-card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    .chart-container {
+      position: relative;
+    //   height: 300px; /* Fixed height so chart is visible */
+      width: 20%;
+    }
+
+    canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  
+}
+
+  .recent-posts-card, .top-posts-card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    ul {
+      li {
+        font-size: 0.95rem;
+        &:not(:last-child) {
+          border-bottom: 1px solid #dee2e6;
+        }
+      }
+    }
+  }
+
+  button.btn-lg {
+    border-radius: 50px;
+    padding: 0.75rem 1.8rem;
+  }
+
+  /* Gradient backgrounds */
+  .bg-blue { background: linear-gradient(45deg, #1e3c72, #2a5298); }
+  .bg-green { background: linear-gradient(45deg, #11998e, #38ef7d); }
+  .bg-orange { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+  .bg-purple { background: linear-gradient(45deg, #8e2de2, #4a00e0); }
+}

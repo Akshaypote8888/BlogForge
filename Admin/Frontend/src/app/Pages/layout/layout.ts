@@ -1,17 +1,17 @@
 import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
-  imports: [NgClass],
+  imports: [NgClass, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './layout.html',
   styleUrl: './layout.scss'
 })
 export class Layout {
 
-  isCollapsed = false;
-  isRotated = false;
+  isCollapsed = true;
+  isRotated = true;
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
