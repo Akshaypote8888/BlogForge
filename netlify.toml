@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build --prod"
+  command = "npm run build --configuration production"
   publish = "dist/BlogForge"
-  node_version = "18.20.4"
+  node_version = "20.15.1"
 
 [build.environment]
   NODE_ENV = "production"
