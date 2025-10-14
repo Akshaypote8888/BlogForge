@@ -1,1 +1,41 @@
-<p>categories works!</p>
+<div class="header">
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-custom" type="submit">Search</button>
+    </form>
+    <button class="btn btn-custom" (click)="openCategoryForm()">Add Category</button>
+</div>
+
+<table class="table text-center">
+    <thead>
+        <tr class="table-heading">
+            <th scope="col">Sr. no</th>
+            <th scope="col">Title</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(!category() || category().length === 0){
+        <tr>
+            <td colspan="4">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </td>
+        </tr>
+        }
+        @for (item of category(); track $index) {
+
+
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.categoryTitle}}</td>
+            <td>{{ item.createdAt | date: 'dd MMM yyyy' }}</td>
+            <td>{{ item.status }}</td>
+            <td></td>
+        </tr>
+        }
+    </tbody>
+</table>

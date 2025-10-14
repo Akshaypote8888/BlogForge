@@ -1,0 +1,23 @@
+<div class="popup-backdrop">
+    <div class="popup">
+        <div class="popup-header">
+            <h3>Category Form</h3>
+            <button (click)="closeDialog()">×</button>
+        </div>
+        <div class="popup-body">
+            <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Catergory Title</mat-label>
+                    <input formControlName="categoryTitle" matInput>
+                    @if (categoryForm.get('name')?.hasError('required')) {
+                    <mat-error>Category Name is required</mat-error>
+                    }
+                </mat-form-field>
+                <div>
+                    <!-- <button mat-button type="button" (click)="closeDialog()">Cancel</button> -->
+                    <button class="btn btn-custom" type="submit" >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
