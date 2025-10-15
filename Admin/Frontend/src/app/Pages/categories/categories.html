@@ -1,41 +1,68 @@
 <div class="header">
     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <input 
+    class="form-control me-2" 
+    type="search" 
+    placeholder="Search" 
+    aria-label="Search" 
+    [(ngModel)]="searchText" 
+    (ngSubmit)="onSearch()"
+    name="searchText" />
         <button class="btn btn-custom" type="submit">Search</button>
     </form>
     <button class="btn btn-custom" (click)="openCategoryForm()">Add Category</button>
 </div>
 
-<table class="table text-center">
+
+  <table class="table text-center align-middle  responsive-stack">
     <thead>
-        <tr class="table-heading">
-            <th scope="col">Sr. no</th>
-            <th scope="col">Title</th>
-            <th scope="col">Created At</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
-        </tr>
+      <tr class="table-heading">
+        <th scope="col">Sr. no</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
     </thead>
     <tbody>
-        @if(!category() || category().length === 0){
+      @if(isLoading) {
         <tr>
-            <td colspan="4">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </td>
+          <td colspan="5">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </td>
         </tr>
-        }
-        @for (item of category(); track $index) {
-
-
+      }
+      @else if(!isLoading && categories().length === 0) {
         <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.categoryTitle}}</td>
-            <td>{{ item.createdAt | date: 'dd MMM yyyy' }}</td>
-            <td>{{ item.status }}</td>
-            <td></td>
+          <td colspan="5" class="text-center">No records yet</td>
         </tr>
-        }
+      }
+      @for(item of categories(); track $index) {
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.categoryTitle }}</td>
+          <td>{{ item.createdAt | date: 'dd MMM yyyy' }}</td>
+          <td>
+            @if(item.status === true) {
+              <span class="active-tag">Active</span>
+            } @else {
+              <span class="inactive-tag">InActive</span>
+            }
+          </td>
+          <td>
+            <button mat-icon-button color="accent" matTooltip="Status" (click)="statusChange(item.status, item.id)">
+              <mat-icon>{{ item.status ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Edit" (click)="onEdit(item)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" matTooltip="Delete" (click)="onDelete(item.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      }
     </tbody>
-</table>
+  </table>

@@ -6,16 +6,26 @@
         </div>
         <div class="popup-body">
             <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Catergory Title</mat-label>
                     <input formControlName="categoryTitle" matInput>
                     @if (categoryForm.get('name')?.hasError('required')) {
                     <mat-error>Category Name is required</mat-error>
                     }
                 </mat-form-field>
-                <div>
-                    <!-- <button mat-button type="button" (click)="closeDialog()">Cancel</button> -->
-                    <button class="btn btn-custom" type="submit" >Submit</button>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="categoryDescription" matInput></textarea>
+                </mat-form-field>
+                <div class="form-actions">
+                    
+                    <button class="btn btn-custom" type="submit">
+                        @if (!isEdit) {
+                        Create
+                    } @else {
+                        Update
+                    }
+                </button>
                 </div>
             </form>
         </div>

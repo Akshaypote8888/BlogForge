@@ -33,20 +33,58 @@ body {
   // Reset the user agent margin.
   margin: 0;
 }
-th{
-    background-color: #2BB4BA !important;
-    color: white !important;
-    padding: 15px !important;
-    font-size: 18px !important;
-}
 .btn-custom {
-      background-color: #392892 !important;
-      color: white;
-      font-weight: 600;
-      &:hover {
-        background-color: #342197 !important;
-        color: white !important;
-      }
-    }
+  background-color: #392892 !important;
+  color: white;
+
+  // font-weight: 600;
+  &:hover {
+    background-color: #342197 !important;
+    color: white !important;
+  }
+}
+
+.active-tag{
+  background-color: #4d9c4a;
+  color: white !important;
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+.inactive-tag{
+  background-color: #fc3333 ;
+  color: white !important;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+
+@media (max-width: 768px) {
+  .responsive-stack thead {
+    display: none; /* hide header */
+  }
+
+  .responsive-stack tr {
+    display: block;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .responsive-stack td {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #eee;
+  } 
+
+  .responsive-stack td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

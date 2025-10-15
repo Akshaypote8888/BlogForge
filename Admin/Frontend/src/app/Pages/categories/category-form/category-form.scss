@@ -14,13 +14,14 @@
   background: white;
   padding: 20px;
   border-radius: 8px;
-  min-width: 300px;
+  min-width: 20%;
 }
 
 .popup-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .popup-header button {
@@ -28,4 +29,16 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
+}
+.full-width {
+  width: 100%;
+}
+.form-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end !important; /* aligns child to the right */
+  margin-top: 1rem;          /* optional spacing above button */
+}
+.form-actions button {
+  margin-left: 0.5rem;
 }

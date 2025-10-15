@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,36 +15,51 @@ import { Category } from '../../../interface/category';
 })
 export class CategoryForm {
 
- 
+
+  isEdit = false;
 
   categoryForm: FormGroup = new FormGroup({
-    categoryTitle: new FormControl('', Validators.required)
+    categoryTitle: new FormControl('', Validators.required),
+    categoryDescription: new FormControl('')
 
   });
 
   private api = inject(ApiService);
+  private data = inject(MAT_DIALOG_DATA) as Category;
 
-  constructor(private dialogRef: MatDialogRef<CategoryForm>) { }
+  constructor(private dialogRef: MatDialogRef<CategoryForm>,) {
+
+    this.categoryForm.patchValue({
+      categoryTitle: this.data.categoryTitle || '',
+      categoryDescription: this.data.categoryDescription || ''
+    });
+    if (this.data.id) {
+      this.isEdit = true; 
+    }
+
+  }
 
 
   submitForm() {
     if (this.categoryForm.valid) {
 
       const payload = {
-      categoryTitle: this.categoryForm.value.categoryTitle,
-      status: 'Active',
-      
-    };
+        categoryTitle: this.categoryForm.value.categoryTitle,
+        categoryDescription: this.categoryForm.value.categoryDescription,
+        status: true
+      };
 
-      this.api.addUser(payload).subscribe({
-        next: (res: any) => {
-          console.log('Created User:', res);
-          this.dialogRef.close(res);
-        },
-        error: (err) => {
-          console.error('Create user failed:', err);
-        }
-      });
+      if (this.isEdit) {
+        this.api.updateCategory(this.data.id, payload).subscribe({
+          next: res => this.dialogRef.close(res),
+          error: err => console.error('Update failed', err)
+        });
+      } else {
+        this.api.addCategory(payload).subscribe({
+          next: res => this.dialogRef.close(res),
+          error: err => console.error('Create failed', err)
+        });
+      }
     }
   }
 

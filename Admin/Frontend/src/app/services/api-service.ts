@@ -15,12 +15,21 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<any> {
+  getCategories(): Observable<any> {
     return this.http.get(`${this.baseUrl}/categories`);
   }
 
-  addUser(user: any): Observable<any> {
+  addCategory(user: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/categories`, user);
+  }
+
+  updateCategory(id: number, category: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/categories/${id}`, category);
+    
+  }
+
+  deleteCategory(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/categories/${id}`);
   }
   
 }
